@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="post single">
+  <header class="post-head">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}
+    <p class="subtitle">{{ . }}</p>
+    {{ end }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    {{ with .Params.tags }}
+    <div class="tags">{{ range . }}<span class="tag">#{{ . }}</span>{{ end }}</div>
+    {{ end }}
+  </header>
+  {{ .Content }}
+  <footer class="post-foot">
+    {{ with .Params.crossposts }}
+    <p class="crossposts"><strong>also hollered at:</strong> {{ delimit . " · " }}</p>
+    {{ end }}
+    <p class="corrections">Wrong or outdated? Holler back — corrections get folded in with a note.</p>
+  </footer>
+</article>
+{{ end }}

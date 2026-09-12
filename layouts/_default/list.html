@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ if .IsHome }}
+{{ if .Content }}
+<section class="intro">
+{{ .Content }}
+</section>
+{{ end }}
+<section class="posts">
+{{ range (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
+  <article class="post">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    <p>{{ .Summary }}</p>
+  </article>
+{{ end }}
+</section>
+{{ else }}
+<h1 class="tax-head">{{ .Title }}</h1>
+<section class="posts">
+{{ range .Pages }}
+  <article class="post">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    <p>{{ .Summary }}</p>
+  </article>
+{{ end }}
+</section>
+{{ end }}
+{{ end }}

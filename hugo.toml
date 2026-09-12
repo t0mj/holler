@@ -1,0 +1,16 @@
+baseURL = "/holler/"
+locale = "en-us"
+title = "holler"
+copyright = "take it with a grain of salt"
+enableRobotsTXT = true
+summaryLength = 40
+
+[params]
+  tagline = "a holler into the void from local LLM tinkering"
+  description = "Field notes from a small local-inference fleet: AMD 7900 XTX on Vulkan, llama.cpp, llama-swap, and burst cloud pods for frontier models. Measured, not vibes."
+
+[markup]
+  [markup.highlight]
+    noClasses = true
+  [markup.goldmark.renderer]
+    unsafe = true
