@@ -6,9 +6,8 @@ This repo is public (`t0mj/holler`). Only public-safe content belongs here: the 
 - No working docs, no IDEAS/sources/writer-test material, no drafts, no fleet details beyond
   what the published posts already say, no internal IPs, no client/proprietary names, no
   personal info, no session UUIDs.
-- Content arrives one way only: the working repo (`~/dev/holler`, private `t0mj/holler-work`)
-  → `scripts/publish-site.sh` (sanitizes per its rules + filters to live posts, `draft: false`)
-  → this repo.
+- Content arrives one way only: a private working repo → `scripts/publish-site.sh`
+  (sanitizes per its rules + filters to live posts, `draft: false`) → this repo.
 - `scripts/leak-check.sh` is the pre-push tripwire; its string list is local-only
   (`.git/info/leak-strings.txt`, untracked — a list of strings you must never publish must
   never itself be published). Run it before any commit: `scripts/leak-check.sh`.
