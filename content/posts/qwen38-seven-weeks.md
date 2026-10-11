@@ -82,7 +82,7 @@ How to read it:
 
 The stock serving config shipped with speculative decoding on. On the base family it scored fix/implement 0/40 with no crash, no error in the logs, and plausible-looking output. A failure with no alarm attached is the kind that reaches production. Zero points, nothing flagged.
 
-An A/B on 09-15/16 held everything constant except the spec flag: 364 cells, seed 42, identical payload. Switching spec off moved the 3.8 base from 0.704 to 0.882, and fix/implement from 0/40 to 39/40. Smaug moved from 0.700 to 0.885, with 27/40 on fix/implement at spec on. The control block held steady across the flip.
+An A/B on 09-15/16 held everything constant except the spec flag: 364 cells, seed 42, identical payload. Switching spec off moved the 3.8 base from 0.704 to 0.882, and fix/implement from 0/40 to 39/40. Smaug moved from 0.700 to 0.885, with 27/40 on fix/implement at spec on. The control block held steady across the flip. The block-by-block detail, the upstream bug-class mapping, and an independent NVIDIA-side corroboration are in [the dedicated write-up](/holler/posts/spec-decode-quantized-targets-degradation/).
 
 Turning spec off has a price, measured on a scratch server with one payload per arm (09-16, Q4_K_M). With spec on, decode was 1.92× faster at standard context (40.5 → 77.8 t/s) and 1.50× faster at 64k (34.5 → 51.7 t/s). Prefill ran −4–6%, and VRAM use rose by +1.4 GiB. (The 40.5 t/s is one clean payload on an idle server. The p50s quoted in the 3.5 comparison come from a full production day, and the two measurements don't subtract.) A wrong answer decoded twice as fast is still wrong. The price stays on record for the day the upstream fix lands, and a write-up of the speed side is in the works.
 
