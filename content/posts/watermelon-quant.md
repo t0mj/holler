@@ -1,7 +1,7 @@
 ---
 title: "My image model grew a watermelon instead of a pb&j"
 subtitle: "A quantization A/B that flipped what an image is about, a blinded re-score that withdrew the verdict, and a reasoning pass that turned out to be a gate"
-date: 2026-09-20
+date: 2026-10-17
 draft: false
 tags: [image-generation, qwen-image, quantization, stable-diffusion.cpp, amd]
 summary: "Qwen-Image-2.1's Q4_0 build grew a watermelon out of a sandwich prompt. Blinding showed the seed was the real lever, and a 9B refine pass scored 8/8 where a neutral one scored 4/8."
@@ -21,7 +21,7 @@ One box: a 24 GB RX 7900 XTX, Vulkan (RADV), running stable-diffusion.cpp at com
 
 The prompt, exactly as typed: "a cartoon octopus in the real world tattooing a pb&j on one of its arms while at the beach."
 
-![Figure 1. Left: the raw prompt at Q4_0, 1536², seed 42 — a slice of watermelon grows out of the tentacle where the sandwich belongs. Right: same weights, same prompt meaning, with a 9B model rewriting the sentence first — scored 8/8 blind at 1024², seed 7. Same quant; the ceiling moved upstream.](/img/watermelon-quant/figure-1.png)
+![Figure 1. Left: the raw prompt at Q4_0, 1536², seed 42 — a slice of watermelon grows out of the tentacle where the sandwich belongs. Right: same weights, same prompt meaning, with a 9B model rewriting the sentence first — scored 8/8 blind at 1024², seed 7. Same quant; the ceiling moved upstream.](/holler/img/watermelon-quant/figure-1.png)
 
 ## The watermelon
 
@@ -59,7 +59,7 @@ The prompt carries a real ambiguity: "tattooing a pb&j on one of its arms" — i
 | explicit | needle on its own tentacle; the sandwich is the design being inked | 581 chars | 8, 8, 8 | 8.00/8 |
 | neutral | "you decide what the original means; add or remove nothing" | 207 chars | 4, 4, 4 | 4.00/8 |
 
-![Figure 2. The ablation as a strip, six renders under blind IDs: the three that scored 8/8 came from the explicit refine, the three that scored 4/8 from the neutral one. Same model, same seeds, same settings; only the instruction to the refiner differs.](/img/watermelon-quant/figure-2.png)
+![Figure 2. The ablation as a strip, six renders under blind IDs: the three that scored 8/8 came from the explicit refine, the three that scored 4/8 from the neutral one. Same model, same seeds, same settings; only the instruction to the refiner differs.](/holler/img/watermelon-quant/figure-2.png)
 
 Two findings, and they point opposite ways.
 
