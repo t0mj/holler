@@ -175,3 +175,11 @@ hr {
 }
 
 .tax-head { font-size: 1.4rem; margin: 0 0 0.5rem; color: var(--gold); }
+
+/* figures */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.4em auto;
+}
